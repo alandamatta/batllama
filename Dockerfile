@@ -1,6 +1,7 @@
 FROM openjdk:11
-ARG JAR_FILE=target/*.jar
 CMD mvn package
-ADD ${JAR_FILE} app.jar
+COPY ./target/batllama-1.jar app.jar
+CMD pwd
+CMD ls
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
