@@ -1,5 +1,6 @@
 package com.llamaworld.batllama.controller;
 
+import com.llamaworld.batllama.model.MessageResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class BatllamaController {
 
     @GetMapping("whoami")
-    public ResponseEntity<String> whoAmI() {
-        return ResponseEntity.ok("Llama City Vigilante");
+    public ResponseEntity<MessageResponse> whoAmI() {
+        MessageResponse messageResponse = new MessageResponse("Llama City Vigilante");
+        return ResponseEntity.ok(messageResponse);
     }
 
     @GetMapping("/help")
-    public ResponseEntity<String> callBatllama() {
+    public ResponseEntity<MessageResponse> callBatllama() {
+        MessageResponse messageResponse = new MessageResponse("Batllama will be on your way shortly...");
         log.warn("Help was called");
-        return ResponseEntity.ok("Batllama will be on your way shortly...");
+        return ResponseEntity.ok(messageResponse);
     }
 
 }
